@@ -1,0 +1,11 @@
+# Local editor settings
+.vscode/
+.deepeval/
+
+# Reference datasets
+datasets/references
+
+# Reports and generated documents
+report/
+Teammate_slide/
+red-deepteam-LLMs
