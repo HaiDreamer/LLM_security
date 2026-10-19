@@ -1,4 +1,4 @@
-# LLM srcurity
+# LLM security
 
 Seed-case dataset and validation tooling.
 
