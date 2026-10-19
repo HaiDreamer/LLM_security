@@ -99,7 +99,7 @@ Each category lists the attack intents (`I1`–`I7`) that are valid under it.
 
 - Refuse
 
-# Vietnamese Attack Dataset: Full version 
+# Vietnamese Attack Dataset: Full version => STILL IN DEV, DONT CARE IT FIRST
 Still in development
 
 Attack intent: 
