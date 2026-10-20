@@ -18,7 +18,9 @@ def main() -> int:
     )
     parser.add_argument(
         "jsonl_path",
-        help="Path to the JSONL file to validate.",
+        nargs="?",
+        help="Path to the JSONL file dataset to validate.",
+        default=PROJECT_ROOT / "datasets" / "raw" / "data_dictionary_v0.1.jsonl",
     )
     args = parser.parse_args()
 
