@@ -54,9 +54,7 @@ ALLOWED_VALUES = {
 }
 
 
-def load_jsonl(
-    file_path: str | Path,
-) -> tuple[list[dict[str, Any]], list[int], list[str]]:
+def load_jsonl(file_path: str | Path,) -> tuple[list[dict[str, Any]], list[int], list[str]]:
     path = Path(file_path)
     records: list[dict[str, Any]] = []
     line_numbers: list[int] = []
@@ -102,10 +100,7 @@ def load_jsonl(
     return records, line_numbers, errors
 
 
-def validate_record(
-    record: dict[str, Any],
-    line_number: int,
-) -> list[str]:
+def validate_record(record: dict[str, Any], line_number: int) -> list[str]:
     """Validate one record against the Seed Case schema."""
     errors: list[str] = []
 
@@ -176,10 +171,7 @@ def validate_record(
     return errors
 
 
-def validate_records(
-    records: list[dict[str, Any]],
-    line_numbers: list[int] | None = None,
-) -> list[str]:
+def validate_records(records: list[dict[str, Any]], line_numbers: list[int] | None = None) -> list[str]:
     """Validate all records, including dataset-wide ID uniqueness."""
     errors: list[str] = []
 
