@@ -19,20 +19,30 @@ def main() -> int:
     parser.add_argument(
         "jsonl_path",
         nargs="?",
+        default=PROJECT_ROOT
+        / "datasets"
+        / "raw"
+        / "seed_cases_v0.1.jsonl",
         help="Path to the JSONL file dataset to validate.",
-        default=PROJECT_ROOT / "datasets" / "raw" / "data_dictionary_v0.1.jsonl",
     )
     args = parser.parse_args()
 
-    records, line_numbers, load_errors = load_jsonl(args.jsonl_path)
+    jsonl_path = Path(args.jsonl_path)
 
+    records, line_numbers, load_errors = load_jsonl(jsonl_path)
+
+    # Stop if the file cannot be loaded or contains invalid JSONL records.
     if load_errors:
         print("DATASET LOADING FAILED")
+        print(f"Input file: {jsonl_path}")
         for error in load_errors:
             print(f"ERROR: {error}")
         return 1
 
-    validation_errors = validate_records(records, line_numbers)
+    # Validate records and collect both errors and language-review warnings.
+    validation_errors, validation_warnings = validate_records(
+        records, line_numbers
+    )
 
     # Count IDs only when they are non-empty strings.
     valid_ids = [
@@ -44,18 +54,31 @@ def main() -> int:
     unique_ids = len(set(valid_ids))
 
     print("SEED DATASET VALIDATION")
-    print(f"Input file: {args.jsonl_path}")
+    print(f"Input file: {jsonl_path}")
     print(f"Records loaded: {len(records)}")
     print(f"Non-empty case IDs: {len(valid_ids)}")
     print(f"Unique case IDs: {unique_ids}")
     print(f"Validation errors: {len(validation_errors)}")
+    print(f"Validation warnings: {len(validation_warnings)}")
 
     if validation_errors:
-        print("\nValidation details:")
+        print("\nValidation errors:")
         for error in validation_errors:
             print(f"- {error}")
+
+    if validation_warnings:
+        print("\nItems requiring manual review:")
+        for warning in validation_warnings:
+            print(f"- {warning}")
+
+    # Errors fail validation. Warnings require human review.
+    if validation_errors:
         print("\nRESULT: FAILED")
         return 1
+
+    if validation_warnings:
+        print("\nRESULT: REVIEW REQUIRED")
+        return 2
 
     print("\nRESULT: PASSED")
     return 0
