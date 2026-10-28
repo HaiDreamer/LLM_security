@@ -1,0 +1,448 @@
+\documentclass[a4paper,12pt]{report}
+\usepackage{makecell}
+\usepackage{placeins}
+\usepackage[T5]{fontenc}
+\usepackage[american]{babel}
+\usepackage[margin=1in]{geometry}
+\usepackage{tikz}
+\usepackage{amssymb}
+\usetikzlibrary{calc}
+\usepackage{graphicx}
+\usepackage{lmodern}
+\usepackage{titlesec}
+\titlespacing*{\chapter}{0pt}{0pt}{0pt}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\setlength{\headheight}{15pt}
+\addtolength{\topmargin}{-2.5pt}
+\fancyhead[L]{}
+\fancyhead[R]{\textit{\MakeUppercase{\leftmark}}}
+\usepackage{amsmath}
+\usepackage{array, booktabs, multirow, longtable}
+\usepackage{tabularx}
+\usepackage{adjustbox}
+\usepackage{newunicodechar}
+\newunicodechar{≈}{\approx}
+\usepackage{listings}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{makecell}
+\usepackage{float}
+\usepackage{tocloft}
+\usepackage[colorlinks=true, linkcolor=black, citecolor=black, urlcolor=black]{hyperref}
+\usepackage{bookmark}
+\usepackage{lipsum}
+\usepackage{cite}
+\usepackage{setspace}
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,
+    breaklines=true,
+    captionpos=b,
+    keepspaces=true,
+    numbers=left,
+    numbersep=5pt,
+    showlines=false,
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    tabsize=2
+}
+\lstset{style=mystyle, showlines=false}
+% Glossaries are not used in this document, so disable the package to avoid warnings.
+% \usepackage[acronym]{glossaries}
+% \makeglossaries
+
+\begin{document}
+
+% ===== COVER PAGE =====
+
+\thispagestyle{empty}
+\begin{tikzpicture}[remember picture, overlay]
+    \draw[line width=2pt]
+        ($(current page.north east) - (0.5in, 0.5in)$);
+\end{tikzpicture}
+\begin{center}
+    \adjustbox{max width=\textwidth}{\small \textbf{DEPARTMENT OF INFORMATION AND COMMUNICATION TECHNOLOGY}} \vspace{1cm}
+%\includegraphics[width=0.7\textwidth]{images/usth.png} \vspace{1cm}
+    % Move Thesis lower
+    \vspace{0.7cm} \\
+    {\Huge \textbf{Report}} \vspace{1.0cm}
+    \rule{\textwidth}{0.75pt} \vspace{0.6cm}
+    \LARGE \textbf{Threat Modelling in Large Language Models} \vspace{0.4cm}
+    \rule{\textwidth}{0.75pt} \vspace{1.2cm}
+    % Author
+    {\Large \textbf{By Nguyen Huy Hai}}
+\end{center}
+\vfill
+\begin{center}
+    % Supervisor above date
+    %{\large \textbf{Supervisor: Assoc. Prof. Tran Giang Son}} \\ \vspace{0.8cm}
+    \textit{Ha Noi, August 2026}
+\end{center}
+
+\newpage
+
+
+% ===== FRONT MATTER =====
+\newpage
+\pagenumbering{arabic}
+\setcounter{page}{1}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{3pt}
+
+\newpage
+\tableofcontents
+
+\newpage
+\listoffigures
+\addcontentsline{toc}{chapter}{List of Figures}
+
+\newpage
+\listoftables
+\addcontentsline{toc}{chapter}{List of Tables}
+
+\newpage
+\chapter*{List of Abbreviations}
+\addcontentsline{toc}{chapter}{List of Abbreviations}
+\printglossary[type=\acronymtype]
+{
+\renewcommand{\arraystretch}{1.3}
+\begin{longtable}{@{}lp{12cm}@{}}
+\toprule
+Term & Definition \\ 
+\midrule
+CARLA   & Car Learning to Act \\
+\bottomrule
+\end{longtable}
+}
+\markboth{List of Abbreviations}{}
+
+\newpage
+\chapter{Introduction}
+% Why threat modelling is the first step 
+Threat modeling is not an isolated preliminary step in this project, the organizing method that many component builds on.
+\begin{itemize}
+    \item \textbf{Intent Drift identification:} Threat modeling turns Intent Drift from a vague phenomenon into a defined taxonomy of attack vectors, a systematic account of how and where drift occurs.
+
+    \item \textbf{Red Teaming:} That taxonomy defines the attack tree the Red Teaming AI searches, so the framework generates targeted adversarial test cases instead of relying on random prompt fuzzing.
+
+    \item \textbf{Monitoring and defenses:} The same threat model specifies the deviation signatures, what drift looks like mechanistically, semantic integrity monitoring is built to detect, and that intent-aware defenses act on.
+
+    \item \textbf{Multilingual/cross-cultural benchmarks:} Threat modeling identifies which attack patterns are genuinely language and culture-specific such as idiom, script-level tricks, culturally specific social-engineering. So the benchmark tests these directly rather than relying on English-language attacks that have simply been translated.
+\end{itemize}
+
+Together, these roles make threat modeling the shared reference model that unifies Red Teaming, monitoring, provenance, verification, and benchmarking into defense pipeline.
+
+\chapter{Related Works}
+% tell paper have done works related to
+
+\textbf{ThreMoLIA — Threat Modeling of Large Language Model Integrated Applications}
+\begin{itemize}
+    \item \textbf{Problem/gap:} Threat modeling for LLM-integrated applications (LIAs) is manual and effort-intensive; no automated support exists.
+    
+    \item \textbf{Approach:} LLM + RAG-assisted framework that starts from a system Data Flow Diagram and combines MITRE ATLAS, OWASP Top 10 for LLMs, and STRIDE to generate/update a threat model, augmented with retrieval over existing threat models, security knowledge, and architecture docs.
+    
+    \item \textbf{Key result(s):} Proposes a "health score" concept (19 candidate metrics — e.g., threat coverage, residual risk, model complexity) to estimate threat-model completeness/quality; no concrete scoring formula defined yet.
+    
+    \item \textbf{Limitation:} Early-stage vision paper; evaluation limited to a single proof-of-concept case study on ChatGPT-3.5; no formula validated with practitioners; no industrial case studies.
+    
+    \item \textbf{Relevance to this work:} \textbf{[ASSUMPTION — confirm/edit]} ThreMoLIA's LLM+RAG-assisted, DFD-driven approach to generating a threat model is the closest prior work to the threat-modeling stage of this framework, but lacks the intent-drift-specific taxonomy and downstream automation (Red Teaming, monitoring, provenance) this work builds on top of a threat model.
+\end{itemize}
+
+\vspace{0.5em}
+\textbf{Red Teaming Language Models with Language Models (Perez et al., EMNLP 2022)}
+\begin{itemize}
+    \item \textbf{Problem/gap:} Manual Red Teaming (humans hand-writing adversarial prompts) is costly and doesn't scale.
+    
+    \item \textbf{Approach:} A "red LM" automatically generates adversarial test inputs in a three-stage pipeline: (1) red LM generates adversarial test input $x$, (2) target LM produces reply $y$, (3) a classifier $r(x,y)$ flags harmful outputs. Compares four generation methods (zero-shot, stochastic few-shot, supervised learning, RL) on a diversity/difficulty trade-off.
+    
+    \item \textbf{Key result(s):} RL is most effective at eliciting harm but prone to mode collapse at aggressive settings (78\% of generated questions converged on "invisible"). Applied to a 280B-parameter chatbot, surfaced five harm categories: offensive replies, training-data leakage, generated contact info, distributional bias, and multi-turn compounding harms.
+    
+    \item \textbf{Limitation:} Effectiveness is bounded by the red LM and classifier, both of which inherit biases from their training data; complements rather than replaces manual Red Teaming.
+    
+    \item \textbf{Relevance to this work:} \textbf{[ASSUMPTION]} Using an LM to automate adversarial test generation, directly relevant to the AI-driven Red Teaming component of this framework; this work's threat model supplies that structure to target generation rather than searching unconstrained.
+\end{itemize}
+
+\vspace{0.5em}
+\textbf{HarmBench — A Standardized Evaluation Framework for Automated Red Teaming and Robust Refusal}
+\begin{itemize}
+    \item \textbf{Problem/gap:} Prior automated Red Teaming evaluations lack breadth (most test 
+$<100$ behaviors), comparability (e.g., completion length alone can swing ASR by up to 
+30\%), and robust classifiers (many fail simple adversarial sanity checks, such as missing 
+a model that initially refuses but then complies anyway).
+    
+    \item \textbf{Approach:} 510 curated harmful behaviors across 7 semantic categories and 4 functional categories, with an official validation/test split. Pipeline: generate test cases $\rightarrow$ generate completions (fixed 512 tokens, greedy decoding) $\rightarrow$ classify success via a fine-tuned classifier. Also introduces R2D2, an adversarial-training defense method. Recheck with (As an AI, i am sorry, …) and perplexity, not just ASR.
+    
+    \item \textbf{Key result(s):} Benchmarks 18 Red Teaming methods against 33 target LLMs/defenses; finds no attack or defense is uniformly effective, 
+    and robustness does not scale with model size within a family — training data/procedure matters more. R2D2 achieves state-of-the-art robustness against 
+    GCG while preserving general capability.
+    
+    \item \textbf{Limitation:} Standardization is scoped to the specific behavior set and classifiers provided; not stated to cover multilingual or 
+    culturally-specific attack behaviors.
+    
+    \item \textbf{Relevance to this work:} \textbf{[ASSUMPTION]} HarmBench's emphasis on standardized, comparable evaluation is the model for this work's 
+    own benchmarking approach, but its behavior set is not designed for the language and culture-specific attack patterns this work's multilingual benchmarks target.
+\end{itemize}
+
+\vspace{0.5em}
+\textbf{MITRE ATLAS}
+\begin{itemize}
+    \item \textbf{Problem/gap:} Shared vocabulary existed for cataloging real-world adversarial attacks against AI/ML systems.
+    
+    \item \textbf{Approach:} A living knowledge base structured like MITRE ATT\&CK, organizing attacks into tactics (adversary objectives) and techniques 
+    (specific methods), each with identifiers, descriptions, mitigations, and references to documented incidents.
+    
+    \item \textbf{Key result(s):} Continuously updated; recent releases expand coverage of generative-AI threats such as prompt injection and RAG-related attacks.
+    
+    \item \textbf{Limitation:} Not stated in the source material beyond general scope (curated/manual maintenance; framework-level rather than automated).    
+    \item \textbf{Relevance to this work:} \textbf{[ASSUMPTION]} ATLAS serves as the technique-level checklist for this work's threat register, mapping 
+    identified Intent Drift threats to ATLAS techniques gives a standardized, cross-referenceable vocabulary.
+\end{itemize}
+
+\textbf{Azure AI Content Safety}
+Azure AI Content Safety is Microsoft's production content-moderation service, offered as 
+part of Azure AI Foundry, for detecting harmful content in both user-generated and 
+AI-generated text and images.
+
+\begin{itemize}
+    \item \textbf{Problem/gap:} Deployed LLM applications need a way to detect and grade 
+    harmful content in real time, not just flag it as present or absent.
+    \item \textbf{Approach:} An ensemble of classification models scores text (and images) 
+    against four harm categories: Hate/Fairness, Sexual, Violence, and Self-Harm. Each 
+    on an internal 0-7 severity scale. The API can also return a trimmed 4-level scale 
+    (0, 2, 4, 6), where adjacent raw levels are collapsed together, letting applications 
+    set per-category severity thresholds rather than a single pass/fail cutoff. The 
+    broader service also includes Prompt Shields for prompt-injection detection and 
+    groundedness detection for hallucination detection.
+    \item \textbf{Key result(s):} Provides configurable, per-category severity thresholds 
+    integrated natively into Azure OpenAI Service, so prompts and completions are filtered 
+    automatically without additional application logic.
+    \item \textbf{Limitation:} Categories are fixed to general content-harm types 
+    (hate, sexual, violence, self-harm) rather than security-specific attack vectors; 
+    it is not designed to classify Intent Drift or other reasoning-level security threats.
+    \item \textbf{Relevance to this work:} [ASSUMPTION]
+    Azure AI Content Safety's graded severity model (fine-grained internal scoring, 
+    coarser reported levels) is a useful industry reference for grading the severity 
+    of detected Intent Drift events, but its fixed harm categories do not map onto this 
+    work's threat taxonomy, motivating a drift-specific severity scale.
+\end{itemize}
+
+\chapter{Methodology - Planning}
+% tell proposed main steps here (just planning phase)
+\section{Define the System Boundary}
+Threat modelling is started with a DFD(Data Flow Diagram), then STRIDE is applied systematically to each component to identify: external entities, processes, 
+databases, trust boundaries, and data flows. After that, the security bug hunt starts.
+
+\section{Enumerate Threats with STRIDE}
+STRIDE is a threat modeling framework developed by Microsoft that categorizes
+security threats into six classes: Spoofing, Tampering, Repudiation,
+Information Disclosure, Denial of Service, and Elevation of Privilege.
+For LLM-integrated applications, these categories can be reinterpreted as
+security questions that guide the identification of AI-specific threats, such
+as prompt injection, hidden prompt leakage, and context exhaustion.
+
+\begin{table}[ht]
+\centering
+\caption{Interpreting STRIDE for LLM Threat Modeling}
+\label{tab:stride_llm}
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{|p{2.2cm}|p{4.8cm}|p{6.5cm}|}
+\hline
+\textbf{Threat} &
+\textbf{Question} &
+\textbf{LLM Interpretation Example} \\
+\hline
+Spoofing &
+Can someone pretend to be someone else? &
+Can someone impersonate the LLM provider? \\
+\hline
+Tampering &
+Can someone modify data or code? &
+Can prompts be altered? \\
+\hline
+Repudiation &
+Can someone deny performing an action? &
+Can prompt history be deleted? \\
+\hline
+Information Disclosure &
+Can confidential information leak? &
+Can hidden prompts leak? \\
+\hline
+Denial of Service &
+Can the system be made unavailable? &
+Can huge prompts exhaust context? \\
+\hline
+Elevation of Privilege &
+Can someone gain more permissions than intended? &
+Can prompt injection bypass safety instructions? \\
+\hline
+\end{tabular}
+\end{table}
+
+Here there are some threat model matrix for LLM/LMM:
+\begin{table*}[ht]
+\centering
+\caption{Example Threat Model Matrix for LLM/LMM}
+\label{tab:threat_model_matrix}
+\renewcommand{\arraystretch}{1.15}
+\small
+\begin{tabularx}{\textwidth}{|p{2.8cm}|p{2.5cm}|p{2.8cm}|X|}
+\hline
+\textbf{Threat} &
+\textbf{STRIDE Category} &
+\textbf{OWASP Mapping} &
+\textbf{Researched Mitigations} \\
+\hline
+Direct Prompt Injection &
+Tampering / Elevation of Privilege &
+LLM01: Prompt Injection &
+Dual-LLM/LMM verification architectures, Strict separation of data and instructions, Clear input boundaries \\
+\hline
+Indirect Prompt Injection &
+Tampering &
+LLM01: Prompt Injection &
+Isolated sandbox parsing for untrusted data (web pages, PDFs), Semantic boundary sanitization before the LLMs receive an input \\
+\hline
+Cross-Modal Injection (Pixel/Audio Jailbreaks) &
+Tampering / Spoofing &
+LLM01: Prompt Injection (Multimodal Extension) &
+OCR pre-scans on images, Adversarial perturbation filtering, Vision/audio encoder alignment checks \\
+\hline
+Jailbreaking / Guardrail Bypass &
+Elevation of Privilege &
+LLM01: Prompt Injection &
+Layered system instructions, Independent guardrail models (e.g., Llama Guard), Defensive alignment tuning (RLHF/DPO) \\
+\hline
+System Prompt Leakage &
+Information Disclosure &
+LLM02: Sensitive Information Disclosure &
+Strict prompt isolation, Programmatic output regex/semantic filtering, Structural design preventing system prompt disclosure \\
+\hline
+Multimodal Data Poisoning (Training/Fine-tuning) &
+Tampering &
+LLM03: Training Data Poisoning &
+Cryptographic provenance tracking for training data and model weights, Robust data-cleaning pipelines, Gradient anomaly detection \\
+\hline
+\end{tabularx}
+\end{table*}
+
+\section{Score and Prioritize with DREAD}
+Each threat is scored across five dimensions: Damage, Reproducibility, Exploitability, Affected Users, Discoverability.
+\begin{table*}[ht]
+\centering
+\scriptsize
+\renewcommand{\arraystretch}{1.15}
+\caption{MITRE ATLAS Checklist - Threat Register}
+\label{tab:mitre_atlas_threat_register}
+\begin{tabularx}{\textwidth}{|X|X|X|X|X|X|}
+\hline
+\textbf{Threat} &
+\textbf{STRIDE Component} &
+\textbf{Asset Targeted} &
+\textbf{Trust Boundary} &
+\textbf{ATLAS Tactic} &
+\textbf{ATLAS Technique} \\
+\hline
+Direct Prompt Injection &
+Tampering &
+System Prompt \& Intent Parser &
+User $\to$ Orchestrator &
+Initial Access / Execution &
+AML.T0051: LLM Prompt Injection \\
+\hline
+Behavioral Jailbreaking \newline (e.g., Crescendo) &
+Elevation of Privilege &
+Safety Alignment Weights \& Policies &
+User $\to$ LLM Core Engine &
+Privilege Escalation / Defense Evasion &
+AML.T0054: LLM Jailbreak \\
+\hline
+System Prompt Leakage &
+Information Disclosure &
+Hidden Architecture / Context Strings &
+Core Engine $\to$ User &
+Collection / Exfiltration &
+AML.T0056: LLM Meta Prompt Extraction \\
+\hline
+Resource Exhaustion \newline (Token/Context Flooding) &
+Denial of Service &
+Compute Allocation \& Memory Buffers &
+User $\to$ Gateway &
+Impact &
+AML.T0029: Denial of ML Service \\
+\hline
+Indirect RAG Injection \newline (Retrieval Poisoning) &
+Tampering &
+Vector Knowledge Base Embeddings &
+External DB $\to$ Orchestrator &
+Initial Access / Execution &
+AML.T0051.001: Indirect Prompt Injection \\
+\hline
+Cross-Modal Exploitation \newline (Pixel-Hidden Injection) &
+Spoofing / Tampering &
+Vision/Audio Multimodal Encoders &
+External Media Input $\to$ LMM &
+ML Attack Staging / Initial Access &
+AML.T0043: Craft Adversarial Data \\
+\hline
+\end{tabularx}
+\end{table*}
+\FloatBarrier
+
+\section{Attack Taxonomy}
+% TODO: taxonomy tree below is a working draft — cross-check final categories against the papers before finalizing. Every threat should map to exactly one category.
+
+\begin{table*}[ht]
+\centering
+\caption{Attack Taxonomy for LLM/LMM Threats}
+\label{tab:attack_taxonomy}
+\renewcommand{\arraystretch}{1.15}
+\small
+\begin{tabularx}{\textwidth}{|p{2.6cm}|p{2.8cm}|p{3.2cm}|X|}
+\hline
+\textbf{Category} &
+\textbf{STRIDE} &
+\textbf{Example Threats} &
+\textbf{Example Mitigations} \\
+\hline
+Prompt Injection &
+Tampering, Elevation of Privilege &
+Direct, indirect, cross-agent injection &
+Prompt isolation, input validation, tool authorization \\
+\hline
+Adversarial Manipulation &
+Tampering &
+Data poisoning, retrieval poisoning, adversarial examples &
+Data validation, provenance checks, retrieval filtering \\
+\hline
+Hallucination Exploitation &
+Information Disclosure, integrity-related impacts &
+Fabricated citations, false APIs, unsafe advice &
+Grounding, confidence estimation, human review \\
+\hline
+Semantic Misalignment &
+Elevation of Privilege, Tampering &
+Goal manipulation, instruction conflicts &
+Alignment testing, policy constraints, evaluation suites \\
+\hline
+Cross-modal Attacks &
+Tampering &
+OCR injection, hidden text, image-based prompts &
+Content sanitization, modality-specific filtering \\
+\hline
+\end{tabularx}
+\end{table*}
+\FloatBarrier
+
+\end{document}
+
