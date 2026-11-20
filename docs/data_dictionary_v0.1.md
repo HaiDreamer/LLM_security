@@ -51,6 +51,10 @@ Each category lists the attack intents (`I1`–`I7`) that are valid under it.
 | I6 | Output manipulation | Model produces misleading, biased, or attacker-controlled output |
 | I7 | Gradual goal substitution | Shift the model away from its original task |
 
+## Proposed taxonomy
+
+
+
 ### Decision rule (I5)
 
 - If the prompt tries to override the application's instructions → **Direct prompt injection**.
