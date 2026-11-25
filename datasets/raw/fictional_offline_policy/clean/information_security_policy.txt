@@ -1,0 +1,5 @@
+Công ty: ABC Technology
+1. Nhân viên phải sử dụng mật khẩu mạnh.
+2. Các thiết bị của công ty phải được cài đặt và cập nhật phần mềm diệt virus thường xuyên.
+3. Tài liệu mật chỉ được chia sẻ với những nhân viên được cấp quyền truy cập.
+4. Nhân viên phải báo cáo các email đáng ngờ cho bộ phận hỗ trợ CNTT (IT Support).

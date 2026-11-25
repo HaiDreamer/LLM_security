@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.6.29)  18 NOV 2026 14:02
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.6.29)  20 NOV 2026 15:08
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1027,78 +1027,108 @@ Chapter 1.
 
 ]
 Chapter 2.
-[3
-
-]
-Chapter 3.
-LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 172.
-(C:\Program Files\MiKTeX\tex/latex/lm\ot1lmr.fd
+LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 140.
+(C:\Program Files\MiKTeX\tex/latex/lm\ts1lmr.fd
+File: ts1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
+)
+LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 149.
+ (C:\Program Files\MiKTeX\tex/latex/lm\ot1lmr.fd
 File: ot1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
-LaTeX Font Info:    Trying to load font information for OML+lmm on input line 172.
+LaTeX Font Info:    Trying to load font information for OML+lmm on input line 149.
  (C:\Program Files\MiKTeX\tex/latex/lm\omllmm.fd
 File: omllmm.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
-LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 172.
+LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 149.
  (C:\Program Files\MiKTeX\tex/latex/lm\omslmsy.fd
 File: omslmsy.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
-LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 172.
+LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 149.
  (C:\Program Files\MiKTeX\tex/latex/lm\omxlmex.fd
 File: omxlmex.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <12> on input line 172.
+(Font)              <10.95> on input line 149.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 172.
+(Font)              <8> on input line 149.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 172.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 172.
+(Font)              <6> on input line 149.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 149.
  (C:\Program Files\MiKTeX\tex/latex/amsfonts\umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 172.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 149.
  (C:\Program Files\MiKTeX\tex/latex/amsfonts\umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Trying to load font information for T5+lmtt on input line 176.
- (C:\Program Files\MiKTeX\tex/latex/lm\t5lmtt.fd
+Underfull \hbox (badness 1163) in paragraph at lines 153--153
+[]|\T5/lmr/m/n/10.95 The rea-son-ing en-gine that un-der-
+ []
+
+
+Underfull \hbox (badness 2726) in paragraph at lines 155--156
+[]|\T5/lmr/m/n/10.95 Produces re-sults through ac-tions,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 157--157
+[]|\T5/lmr/m/n/10.95 Uses knowl-edge learned dur-ing
+ []
+
+
+Underfull \hbox (badness 1406) in paragraph at lines 157--157
+\T5/lmr/m/n/10.95 train-ing and in-for-ma-tion pro-vided
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 157--158
+[]|\T5/lmr/m/n/10.95 Accesses rel-e-vant in-for-ma-tion
+ []
+
+[3
+
+{C:/Program Files/MiKTeX/fonts/enc/dvips/lm/lm-ts1.enc}] [4] [5] [6]
+Chapter 3.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <12> on input line 284.
+LaTeX Font Info:    Trying to load font information for T5+lmtt on input line 288.
+(C:\Program Files\MiKTeX\tex/latex/lm\t5lmtt.fd
 File: t5lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
-Overfull \hbox (23.99998pt too wide) in paragraph at lines 172--202
+Overfull \hbox (23.99998pt too wide) in paragraph at lines 284--314
  [][] 
  []
 
 
-Overfull \hbox (23.99998pt too wide) in paragraph at lines 218--247
+Overfull \hbox (23.99998pt too wide) in paragraph at lines 330--359
  [][] 
  []
 
 
-Overfull \hbox (23.99998pt too wide) in paragraph at lines 262--301
+Overfull \hbox (23.99998pt too wide) in paragraph at lines 374--413
  [][] 
  []
 
-[4
+[7
 
-] [5] [6] [7] (week5.aux)
+] [8] [9] [10] (week5.aux)
  ***********
 LaTeX2e <2026-06-01>
 L3 programming layer <2026-06-18>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 28916 strings out of 467510
- 520771 string characters out of 5418903
- 1021888 words of memory out of 5000000
- 57621 multiletter control sequences out of 15000+600000
- 710855 words of font info for 72 fonts, out of 8000000 for 9000
+ 28987 strings out of 467510
+ 522056 string characters out of 5418903
+ 1021958 words of memory out of 5000000
+ 57669 multiletter control sequences out of 15000+600000
+ 715243 words of font info for 78 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 102i,11n,117p,664b,543s stack positions out of 10000i,1000n,20000p,200000b,200000s
-<C:/Program Files/MiKTeX/fonts/type1/public/lm/lmbx10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmbx12.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmr12.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmri12.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmtt12.pfb>
-Output written on week5.pdf (7 pages, 253959 bytes).
+ 102i,11n,117p,750b,543s stack positions out of 10000i,1000n,20000p,200000b,200000s
+<C:/Program Files/MiKTeX/fonts/type1/public/lm/lmbx10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmbx12.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmr10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmr12.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmri12.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmtt12.pfb>
+Output written on week5.pdf (10 pages, 306439 bytes).
 PDF statistics:
- 116 PDF objects out of 1000 (max. 8388607)
- 25 named destinations out of 1000 (max. 500000)
- 82 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 181 PDF objects out of 1000 (max. 8388607)
+ 41 named destinations out of 1000 (max. 500000)
+ 154 words of extra memory for PDF output out of 10000 (max. 10000000)
 

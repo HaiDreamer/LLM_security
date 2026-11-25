@@ -131,9 +131,122 @@
 \textbf{Video producing:} Make details video for LLM vs.\ Agentic AI, and Why Context-Aware Training Matters.
 
 \chapter{Hieu's work}
-\textbf{Video LLM vs.\ Agentic AIs}
-% TODO
 
+\textbf{Video: LLM vs. Agentic AI, and Why Context-Aware Training Matters Outline}
+
+\section{Hook / Core Question}
+
+\begin{itemize}
+    \item Why isn't a chatbot enough for real work?
+    \item Why does training an LLM on data that understands context matter?
+\end{itemize}
+
+\section{LLM vs. Agentic AI (Boss and Workers Analogy)}
+
+\begin{table}[htbp]
+\centering
+\small
+\begin{tabular}{|p{0.13\textwidth}|p{0.39\textwidth}|p{0.39\textwidth}|}
+\hline
+\textbf{Category} & \textbf{LLM (The Boss / CEO)} & \textbf{AI Agents (The Workers)} \\
+\hline
+Role & The reasoning engine that understands instructions, generates plans, and can coordinate tasks. & Autonomous components that pursue assigned goals using reasoning, tools, and actions. \\
+\hline
+Output & Generates text, structured responses, decisions, and tool instructions. & Produces results through actions, such as retrieving data, executing code, or generating responses. \\
+\hline
+Knowledge & Uses knowledge learned during training and information provided through context. Can use external retrieval systems. & Accesses relevant information through memory, databases, APIs, documents, and other tools. \\
+\hline
+Time & Does not inherently have access to real-time information. & Can retrieve up-to-date information through external tools and services. \\
+\hline
+Planning & Analyzes the overall goal, creates a plan, divides tasks, and coordinates agents (when acting as an orchestrator). & Executes assigned tasks, makes local decisions, evaluates results, and reports back. \\
+\hline
+\end{tabular}
+\caption{Comparison between LLMs and AI Agents}
+\label{tab:llm_agent_comparison}
+\end{table}
+
+\noindent\textbf{Key line:} LLM = chatting, assign task. Agentic AI = getting it done.
+
+\section{Example Scenario}
+
+\begin{itemize}
+    \item \textbf{Character A} chats with the LLM, asks a question, and gets a text answer based on the past.
+    \item \textbf{Character B} sends a request to the Boss.
+\end{itemize}
+
+\begin{enumerate}
+    \item The Boss reads the message and breaks it down.
+    \item The Boss instructs all workers (agents) to work together.
+    \item The workers return a result that is deployed and runs immediately (for example, a working website).
+\end{enumerate}
+
+\section{The Conflict from the Last Meeting of Vietnam \& Korea}
+
+\subsection{Vietnam's Approach}
+
+\textbf{Approaches:}
+
+\begin{itemize}
+    \item Knowledge distillation from existing large language models.
+    \item Generate synthetic training data using existing models and fine-tune smaller models.
+    \item Transfer selected capabilities from teacher models to student models.
+\end{itemize}
+
+\textbf{Potential weaknesses:}
+
+\begin{itemize}
+    \item \textbf{Capability dependency:} The student often inherits the teacher's limitations and biases. It does not automatically acquire capabilities beyond the information and supervision available during training.
+    
+    \item \textbf{Limited generalization:} If training data is narrow or repetitive, the student may perform well on familiar tasks but struggle with unfamiliar problems.
+    
+    \item \textbf{Knowledge loss:} Some complex reasoning capabilities, knowledge diversity, and nuanced behaviors may not transfer completely.
+    
+    \item \textbf{Model collapse risk:} Indiscriminate recursive training on synthetic data can reduce data diversity and model quality.
+\end{itemize}
+
+\subsection{Korea's Approach}
+
+\begin{itemize}
+    \item Respect data copyright and licensing.
+    \item Develop proprietary local-language datasets.
+    \item Build local benchmarks to measure language understanding and cultural awareness.
+    \item Improve contextual understanding rather than focusing only on translation accuracy.
+\end{itemize}
+
+\section{Why a More Advanced LLM Is Needed}
+
+\begin{itemize}
+    \item It must produce more correct results by learning context.
+    \item A prompt can contain context, but natural-language instructions may be incomplete or ambiguous.
+    \item The Boss must write better instructions for the workers (system instructions), so the actions are clear, correct and actionable.
+    \item Example: the user speaks their own language, while the agent works internally in another language. The system needs context-accurate translation, not just word-for-word translation.
+\end{itemize}
+
+\section{Analogy: The Translator}
+
+Two people graduate from the same university, and a company must choose a translator: one lives in Korea, one in Vietnam.
+
+\begin{itemize}
+    \item The one in Korea is the better choice because they understand the cultural and situational background.
+\end{itemize}
+
+\noindent\textbf{Lesson:} Accurate translation requires understanding meaning, intent, and context, not just translating individual words.
+
+\section{Conclusion / Goal}
+
+\begin{itemize}
+    \item \textbf{Build on high-quality real-world local data:} Develop LLMs that understand local languages, cultural context, and domain-specific knowledge.
+    
+    \item \textbf{Combine multiple data sources:} Use licensed real-world data, existing multilingual models, and carefully validated synthetic data rather than relying entirely on one source.
+    
+    \item \textbf{Develop local benchmarks:} Evaluate whether models understand user intent, contextual meaning, and real-world requirements.
+    
+    \item \textbf{Continuously improve the model:} Use evaluation results and human feedback to identify weaknesses and improve performance.
+\end{itemize}
+
+\noindent\textbf{Final message:} A smarter Boss leads to better-directed workers. By improving the LLM's contextual understanding and reasoning capabilities, AI agents can execute tasks more accurately and deliver results that better match users' actual intentions.
+
+\textbf{Video: LLM vs. Agentic AI, and Why Context-Aware Training Matters}
 
 
 \chapter{Hai's Work}

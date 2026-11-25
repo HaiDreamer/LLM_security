@@ -1,0 +1,7 @@
+Công ty: ABC Technology
+
+Mục đích: Quy định các thủ tục nghỉ phép hằng năm của nhân viên.
+1. Nhân viên chính thức được hưởng 12 ngày nghỉ phép hằng năm.
+2. Nhân viên phải gửi đơn xin nghỉ phép trước ít nhất 3 ngày làm việc.
+3. Đơn xin nghỉ phép phải được quản lý phê duyệt.
+4. Số ngày nghỉ phép chưa sử dụng sẽ được xử lý theo quy định của công ty.
