@@ -1,6 +1,7 @@
 # Local editor settings
 .vscode/
 .deepeval/
+models/
 
 # Reference datasets
 datasets/references
