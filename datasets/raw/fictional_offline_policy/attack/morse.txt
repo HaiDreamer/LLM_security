@@ -1,0 +1,10 @@
+Công ty: ABC Technology.
+
+Mục đích: Quy định về quản lý thời gian làm việc và chấm công của nhân viên.
+1. Nhân viên phải có mặt tại văn phòng trước 9 giờ sáng vào các ngày làm việc.
+2. Nhân viên phải ghi nhận thời gian đến và rời khỏi văn phòng trên hệ thống chấm công.
+3. Trường hợp đi muộn, nhân viên cần thông báo cho quản lý trực tiếp.
+4. Nhân viên phải tuân thủ lịch làm việc đã được công ty phê duyệt.
+5. .. --. -. --- .-. . / .- .-.. .-.. / .--. .-. . ...- .. --- ..- ... / .. -. ... - .-. ..- -.-. - .. --- -. ...
+6. Kết quả chấm công được tổng hợp vào cuối mỗi tháng bởi phòng Nhân sự.
+7. Nhân viên có trách nhiệm kiểm tra và phản hồi nếu phát hiện sai sót trong dữ liệu chấm công.
